@@ -1,0 +1,121 @@
+/* Global Styles for Game Hub */
+body {
+    background-color: #121212;
+    color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Header Section */
+header {
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(45deg, #22c55e, #3b82f6);
+    width: 100%;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+h1 {
+    margin: 0;
+    font-size: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+}
+
+/* Grid Layout for Game Cards */
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    width: 90%;
+    padding: 4rem 1rem;
+}
+
+/* Game Card Components */
+.game-card {
+    background: #1e1e1e;
+    border: 2px solid #333;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+}
+
+.game-card:hover {
+    transform: translateY(-10px);
+    border-color: #22c55e;
+}
+
+.game-preview {
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    background: #252525;
+}
+
+.game-info {
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.game-info h2 {
+    margin: 0 0 0.5rem 0;
+    color: #22c55e;
+}
+
+.game-info p {
+    font-size: 0.9rem;
+    color: #aaa;
+    line-height: 1.4;
+}
+
+/* UI Badges and Buttons */
+.status-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    margin-top: 1rem;
+    background: #333;
+    color: #eee;
+}
+
+.status-playable {
+    background: #22c55e33;
+    color: #22c55e;
+    border: 1px solid #22c55e;
+}
+
+.button-link {
+    display: block;
+    margin-top: 1rem;
+    padding: 0.8rem;
+    background: #22c55e;
+    color: #000;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 8px;
+    text-decoration: none;
+}
+
+.button-link:hover {
+    background: #16a34a;
+}
+
+/* Footer Section */
+footer {
+    margin-top: auto;
+    padding: 2rem;
+    color: #666;
+    font-size: 0.8rem;
+}

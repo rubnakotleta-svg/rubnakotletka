@@ -1,11 +1,20 @@
 # My Multi-Game Portfolio 🚀
 
 ```text
-rubnakotletka
-│
-├── index.html
-├── style.css
-└── script.js
+rubnakotletka/
+├── index.html              <-- Main Hub Page
+├── README.md               <-- Documentation
+├── assets/                 <-- Assets for the Hub
+│   ├── css/
+│   │   └── hub-style.css   <-- Hub Visual Styles
+│   └── js/                 <-- Hub Scripts (Planned)
+└── games/                  <-- Individual Games
+    └── dragon-game/        <-- Game #1
+        ├── index.html      <-- Dragon Game Start
+        ├── css/
+        │   └── dragon-game.css
+        └── js/
+            └── dragon-game.js
 ```
 
 This project is a collection of 4 web-based games, built as part of an assignment for deployment via Vercel.
