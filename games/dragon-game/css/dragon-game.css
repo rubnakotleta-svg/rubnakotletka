@@ -1,0 +1,254 @@
+/* --- GLOBAL STYLES (General layout) --- */
+* {
+  box-sizing: border-box; /* Makes padding and borders not expand the element size */
+}
+
+body {
+  font-family: system-ui, Segoe UI, Roboto, Arial;
+  margin: 0;
+  background: #222; /* Dark background for the whole page */
+  color: #eaeaea; /* Light text color */
+}
+
+main {
+  max-width: 1400px;
+  margin: 2rem auto; /* Centered with space at top/bottom */
+  padding: 1rem;
+}
+
+/* --- INTRO SCREEN STYLES --- */
+.intro {
+  background: #1a1a1a;
+  padding: 16px;
+  border-radius: 8px;
+  border: 2px solid #8b7355;
+}
+
+.intro h1, .intro h2 {
+  color: #d4a574; /* Goldish color for titles */
+}
+
+/* The little castle drawing in the menu */
+.castle-icon {
+  width: 120px;
+  height: 80px;
+  margin: 0 auto 20px;
+  position: relative;
+  background: transparent;
+}
+
+.castle-icon .tower {
+  width: 30px;
+  height: 60px;
+  background: #555;
+  position: absolute;
+  bottom: 0;
+  border: 4px solid #333;
+}
+
+/* The spiky top of the castle tower */
+.castle-icon .tower::before {
+  content: "";
+  position: absolute;
+  top: -15px;
+  left: -4px;
+  width: 30px;
+  height: 15px;
+  background: #555;
+  clip-path: polygon(0% 100%, 20% 100%, 20% 0%, 40% 0%, 40% 100%, 60% 100%, 60% 0%, 80% 0%, 80% 100%, 100% 100%, 100% 0%, 0% 0%);
+  border: 4px solid #333;
+  border-bottom: none;
+}
+
+.castle-icon .tower.left { left: 0; }
+.castle-icon .tower.right { right: 0; }
+
+.castle-icon .wall {
+  width: 60px;
+  height: 40px;
+  background: #666;
+  position: absolute;
+  bottom: 0;
+  left: 30px;
+  border: 4px solid #333;
+  border-left: none;
+  border-right: none;
+}
+
+.castle-icon .gate {
+  width: 20px;
+  height: 25px;
+  background: #331a00;
+  position: absolute;
+  bottom: 0;
+  left: 50px;
+  border-radius: 10px 10px 0 0;
+  border: 2px solid #000;
+}
+
+.intro p {
+  color: #bbb;
+  line-height: 1.5;
+}
+
+/* Generic button style */
+.intro button, .controls button {
+  margin-top: 8px;
+  background: #8b5a3c;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.intro button:hover, .controls button:hover {
+  background: #a67355; 
+}
+
+/* --- GAME AREA STYLES --- */
+
+/* The status bar showing points */
+.status {
+  color: #ffdd99;
+  min-height: 24px;
+  margin-bottom: 8px;
+  font-weight: bold;
+  font-size: 15px;
+  background: #2a2416;
+  padding: 8px;
+  border-radius: 4px;
+  border-left: 3px solid #d4a574;
+}
+
+/* The viewport is the "window" we look through */
+#gameViewport {
+  width: 100%;
+  height: 400px;
+  background: #333;
+  overflow: hidden; /* Hide things that move outside the window */
+  position: relative;
+  border: 4px solid #8b7355;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+/* The game world is the actual long stage */
+#gameWorld {
+  width: 4000px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #0f172a; /* Dark blue "night" background */
+}
+
+/* Background decorations */
+.castle-pillar {
+  position: absolute;
+  top: 0;
+  width: 60px;
+  height: 350px;
+  background: #1e293b;
+  border-left: 2px solid #334155;
+  border-right: 2px solid #334155;
+  z-index: -1; /* Place behind characters */
+}
+
+.torch {
+  position: absolute;
+  width: 8px;
+  height: 20px;
+  background: #fbbf24;
+  z-index: 0;
+}
+
+/* Animated flame for the torch */
+.torch::after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: -1px;
+  width: 10px;
+  height: 10px;
+  background: #f87171;
+  border-radius: 2px;
+  animation: torch-flicker 0.4s steps(2) infinite;
+}
+
+@keyframes torch-flicker {
+  0% { transform: scale(1); background: #f87171; }
+  100% { transform: scale(1.2); background: #fb923c; }
+}
+
+.castle-floor {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  background: #334155;
+  border-top: 4px solid #475569;
+}
+
+/* All characters and items use the 'sprite' class */
+.sprite {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  transition: transform 0.1s linear;
+}
+
+.sprite-dragon { 
+  z-index: 10; 
+  width: 100px;
+  height: 100px;
+}
+
+.sprite canvas {
+  width: 100%;
+  height: 100%;
+  image-rendering: pixelated; /* Keeps the pixel art sharp */
+}
+
+/* Obstacles (stones, crystals, crates, etc.) */
+.barrier {
+  position: absolute;
+  background: #444;
+  border: 4px solid #666;
+  border-radius: 4px;
+  box-shadow: inset 0 0 10px #000;
+  z-index: 2;
+}
+
+.barrier-crystal {
+  background: linear-gradient(135deg, #60a5fa, #1e40af);
+  border: 2px solid #93c5fd;
+}
+
+.barrier-crate {
+  background: #92400e;
+  border: 4px solid #451a03;
+}
+
+.sprite-fire {
+  position: absolute;
+  background: radial-gradient(circle, #ff4500, #ff8c00, transparent);
+  border-radius: 50%;
+  z-index: 15;
+  pointer-events: none; /* Fireballs don't block clicks */
+}
+
+.controls {
+  margin-top: 8px;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.hint {
+  margin-top: 8px;
+  color: #888;
+  font-size: 13px;
+}

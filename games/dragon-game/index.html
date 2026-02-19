@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Adventure of the Dragon (Web)</title>
+  <!-- Link to the visual styles (CSS) -->
+  <link rel="stylesheet" href="css/dragon-game.css">
+</head>
+<body>
+  <main>
+    <h1>⚔️ Dragon in the Castle 🏰</h1>
+
+    <!-- INITIAL SCREEN: Shown when you first open the game -->
+    <div id="intro" class="intro">
+      <div class="castle-icon">
+        <div class="tower left"></div>
+        <div class="wall"></div>
+        <div class="tower right"></div>
+        <div class="gate"></div>
+      </div>
+      <h2>The Dragon Awakens</h2>
+      <p>Deep within the royal castle, a great dragon has awakened! Stop the guards and helpers from reaching the princess before she escapes through the tower gate.</p>
+      
+      <div class="game-selector">
+        <div class="game-choice">
+          <h3>Castle Siege</h3>
+          <p>Devour the defenders in the halls of power. Control the dragon with arrow keys.</p>
+          <button id="startBtn">Start Hunt</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- GAME PLAY AREA: Hidden at first, shown when the game starts -->
+    <div id="gameArea" hidden>
+      <!-- status: shows score and game messages -->
+      <div id="status" class="status"></div>
+      
+      <!-- gameViewport: The frame that keeps the game world inside a box -->
+      <div id="gameViewport">
+        <!-- gameWorld: The long level where all sprites and floors move -->
+        <div id="gameWorld">
+          <!-- Sprites and characters will be added here by JavaScript -->
+          <div class="castle-floor"></div>
+        </div>
+      </div>
+
+      <!-- Controls for the player to use while playing -->
+      <div class="controls">
+        <button id="restart">Restart</button>
+        <button id="help">Help</button>
+      </div>
+    </div>
+
+    <div class="hint">Open with Live Server: right-click index.html → Open with Live Server</div>
+  </main>
+
+  <!-- Link to the game logic (JavaScript) -->
+  <script src="js/dragon-game.js"></script>
+</body>
+</html>
