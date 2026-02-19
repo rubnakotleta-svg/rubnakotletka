@@ -1,5 +1,13 @@
 # My Multi-Game Portfolio 🚀
 
+```text
+rubnakotletka
+│
+├── index.html
+├── style.css
+└── script.js
+```
+
 This project is a collection of 4 web-based games, built as part of an assignment for deployment via Vercel.
 
 ## 📁 Project Structure
